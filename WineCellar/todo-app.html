@@ -1,0 +1,114 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Backbone Boilerplate</title>
+    <style type="text/css">
+    	body {
+    		background: url("pattern1.png");
+    		/*background-position: center;*/
+    		background-size: cover;
+    	}
+    	.app-heading {
+    		text-align: center;
+    		margin: 10px;
+    		font-family: helvetica;
+    		font-size: 2em;
+    		padding: 10px;
+    		/*background: #BABABA;*/
+    		color: white;
+    	}
+    </style>
+</head>
+<body>
+  <div id="todo"></div>
+  <script type="text/template" id="item-template">
+    <input id="todo_complete" type="checkbox" <%= completed ? 'checked="checked"': "" %>>
+    <%= title %>
+  </script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="http://documentcloud.github.com/underscore/underscore-min.js"></script>
+  <script src="http://documentcloud.github.com/backbone/backbone-min.js"></script>
+  <script>
+  // Your code goes here
+
+  // Model
+  var Todo = Backbone.Model.extend({
+  	initialize: function() {
+  		console.log("This model has been initialized");
+  		this.on('change', function() {
+  			console.log('- Values of this model have changed');
+  		});
+  	},
+  	// defaults: {
+  	// 	title: '',
+  	// 	completed: false
+  	// },
+  	validate: function(attrs) {
+  		if (attrs.title === undefined) {
+  			return "Need to set a title!";
+  		}
+  	}
+  });
+
+  // Collection
+  var TodosCollection = Backbone.Collection.extend({
+    model: Todo
+  });
+  TodosCollection.on('change:title', function(model) {
+    console.log("Triggered change event, title of model changed to --> " + model.get('title'));
+  });
+
+  var todo1 = new Todo(null, {'validate': true}); 
+  console.log(todo1.validationError);
+  // console.log(JSON.stringify(todo1));
+
+  var todo2 = new Todo({'title': 'Get Milk'});
+  // console.log(JSON.stringify(todo2));
+  // console.log(todo2.get('title'));
+  // console.log(todo1.toJSON());
+  // console.log(JSON.stringify(todo2.toJSON()));
+
+  todo1.set('title', 'Call Apt');
+  // console.log(todo1.get('title'));
+  // console.log(todo1.attributes);
+  // todo1.attributes = {'title': 'fubar'};
+  // console.log(todo1.attributes);
+
+  var todos = new TodosCollection([todo1, todo2]);
+  console.log("collection length --> " + todos.length);
+  console.log("model at an id --> " + todos.get(todo2.cid).get('title'));
+
+  var todo3 = new Todo({'title': 'call cts'});
+  var todo4 = new Todo({'title': 'drive fast'});
+  todos.add([todo3, todo4]);
+
+  var ItemView = Backbone.View.extend({
+    events: {},
+    initialize: function() {
+      this.model.on('change', this.render, this);
+    },
+    template: _.template($("#item-template").html()),
+    render: function() {
+      this.$el.html(this.template(this.model.attributes));
+      return this;
+    }
+  });
+
+  var ListView = Backbone.View.extend({
+    render: function() {
+      var items = this.model.get('items');
+      _.each(items, function(item){
+        var itemView = new ItemView({model: item});
+        this.$el.append(itemView.render().el);
+      }, this);
+    }
+  });
+
+</script>
+	<div class="app-heading">
+		<strong>TODO App</strong>
+	</div>
+</body>
+</html>

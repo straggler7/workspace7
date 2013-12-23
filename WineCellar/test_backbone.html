@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Backbone Boilerplate</title>
+</head>
+<body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="http://documentcloud.github.com/underscore/underscore-min.js"></script>
+<script src="http://documentcloud.github.com/backbone/backbone-min.js"></script>
+<script>
+  // Your code goes here
+
+  var Todo = Backbone.Model.extend({
+  	defaults: {
+  		title: '',
+  		completed: false
+  	}
+  });
+
+  Todo
+.
+  var todo1 = new Todo({title: 'get milk'});
+  console.log('todo1 --> ' + todo1.get('title') + ' ' + todo1.get('status'));
+
+
+</script>
+<h2>Backbone Boilerplate</h2>
+</body>
+</html>

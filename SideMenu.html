@@ -1,0 +1,45 @@
+<html>
+<head>
+	<title>My vertical menu</title>
+	<!--HTML head including the title tag.-->
+</head>
+<body>
+	<!--HTML body including CSS and the HTML code.-->
+	<!--The beginning of the CSS code section.-->
+	<style type="text/css" media="screen">
+/* Defines the menu attributes: the background color, the menu displayed
+as a block, the block black border, the line height and the menu width ->
+10% of the whole screen width. */
+#verticalmenu{background-color: #acacac; width: 10%; line-height: 2; display: block;
+	border: 1mm solid #000000;}
+	/* Hides the list items of the unordered list. */
+	#verticalmenu li ul { display: none; }
+/* When the mouse pointer hovers over the menu elements, the child unordered list items
+are shown; they are displayed in a block with a different background color, the list marker
+is removed, the space between the element border and the element content is set to 0 using
+the padding property and the space around the elements is also 0. */
+#verticalmenu li:hover > ul { display: block; background-color: #eeeccc;
+	list-style: none; padding: 0; margin: 0;}
+	/* The end of the CSS code section. */
+	</style>
+<!--The HTML part of the body section; Here the menu items are entered;
+They are visualized per the above CSS code definitions; in the div container
+we specify the unique id, which will be used.-->
+<div id="verticalmenu">
+	<ul>
+		<li> <a href="http://siteground.com/">Home</a></li>
+		<li><a href="http://www.siteground.com/tutorials/">Tutorials</a>
+			<ul>
+				<li><a href="http://www.siteground.com/tutorials/cssbasics/index.htm">CSS</a></li>
+				<li><a href="http://www.siteground.com/tutorials/flash/index.htm">Flash</a></li>
+			</ul>
+		</li>
+		<li><a href="#">More</a>
+			<ul>
+				<li><a href="http://www.siteground.com/about_us.htm">About Us</a></li>
+				<li><a href="http://www.siteground.com/contact_us.htm">Contact Us</a></li>
+			</ul>
+		</li>
+	</ul>
+</div>
+<!--The end of the body section and the html file.--> </body></html>

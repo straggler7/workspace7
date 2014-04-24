@@ -1,0 +1,171 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Test HTML CSS JavaScript</title>
+		<style type="text/css">
+			.foo {
+				display: none;
+			}
+			.hidden {
+				position:absolute;
+				left:-10000px;
+				top:auto;
+				width:1px;
+				height:1px;
+				overflow:hidden;
+			}
+			#skip a
+			{ 
+				position:absolute; 
+				left:-10000px; 
+				top:auto; 
+				width:1px; 
+				height:1px; 
+				overflow:hidden;
+			} 
+
+			#skip a:focus 
+			{ 
+				position:static; 
+				width:auto; 
+				height:auto; 
+			} 
+
+			div {
+				background-color: #CDDA99;
+				display: block;
+				padding: 10px;
+				margin: 10px;
+			}
+
+			ul.nav {
+				list-style: none;
+			}
+
+			ul.nav li {
+				display: inline-block;
+				padding: 10px;
+				background-color: black;
+				color: white;
+				border-radius: 5px;
+				width: 100px;
+			}
+
+			div.side-menu {
+				width: 20%;
+			}
+
+			.side-menu ul {
+				list-style: none;
+				padding: 10px;
+			}
+
+			.side-menu ul li {
+				background-color: black;
+				margin: 10px;
+				padding: 10px;
+				color: white;
+				border-radius: 10px;
+				display: block;
+				text-align: center;
+			}
+			.center {
+				width: 600px;
+				margin: 0 auto;
+				padding: 50px;
+				border-radius: 5px;
+				border: 1px dotted black;
+			}
+			.nav li {
+				display: inline;
+				text-align: center;
+			}
+
+	</style>
+	</head>
+	<body>
+		<div class="foo">
+			<div id="my-div" class="foo" tabindex="2"><a href="#">Show only on Focus</a></div>
+		</div>
+		<div class="hidden">this is hidden text</div>
+		<div id="skip"><a href="#content">Skip to Main Content</a></div>
+
+		<div id="p1">
+			<div id="c1">
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			</div>
+		</div>
+
+		<div class="navbar">
+			<ul class="nav">
+				<li>Tab 1 foo bar baz </li>
+				<li>Tab 2</li>
+				<li>Tab 3</li>
+			</ul>
+		</div>
+
+		<div class="side-menu">
+			<ul class="nav-list">
+				<li>foo</li>
+				<li>Bar</li>
+				<li>Baz</li>
+			</ul>
+		</div>
+		
+
+		<div id="verticalmenu">
+			<ul>
+				<li> <a href="http://siteground.com/">Home</a></li>
+				<li><a href="http://www.siteground.com/tutorials/">Tutorials</a>
+					<ul>
+						<li><a href="http://www.siteground.com/tutorials/cssbasics/index.htm">CSS</a></li>
+						<li><a href="http://www.siteground.com/tutorials/flash/index.htm">Flash</a></li>
+					</ul>
+				</li>
+				<li><a href="#">More</a>
+					<ul>
+						<li><a href="http://www.siteground.com/about_us.htm">About Us</a></li>
+						<li><a href="http://www.siteground.com/contact_us.htm">Contact Us</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+
+
+		<div class="center">
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		</div>
+
+		<div class="nav-container center">
+			<ul class="nav">
+				<li>foo</li>
+				<li>bar</li>
+				<li>baz</li>
+			</ul>
+		</div>
+
+		<script type="text/javascript">
+			var myDiv = document.getElementById('my-div');
+			console.log(typeof myDiv);
+			myDiv.onfocus = function() {
+				console.log('On Focus event');
+				//myDiv.style.display = '';				
+			};
+			myDiv.onBlur = function() {
+				myDiv.style.display = 'none';
+			};
+		</script>
+		<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	</body>
+</html>

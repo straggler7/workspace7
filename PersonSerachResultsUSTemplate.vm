@@ -1,0 +1,12 @@
+<hr>
+<h3><span id="personSearchResultsCount"></span> Potential Matches Found</h3>
+<table class="display" id="personSearchResultsTable">
+	<thead>
+		<tr>
+			<th>Existing Record</th>
+			<th>Application ID</th>
+			<th>Verification Issues</th>
+		</tr>
+	</thead>
+	<tbody></tbody>
+</table>
